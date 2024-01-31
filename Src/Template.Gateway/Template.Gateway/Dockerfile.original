@@ -11,12 +11,6 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Src/Directory.Packages.props", "Src/"]
 COPY ["Src/Template.Gateway/Template.Gateway/Template.Gateway.csproj", "Src/Template.Gateway/Template.Gateway/"]
-COPY ["Src/Template.Common/Template.Common.DI/Template.Common.DI.csproj", "Src/Template.Common/Template.Common.DI/"]
-COPY ["Src/Template.Common/Template.Common.RabbitMQ/Template.Common.RabbitMQ.csproj", "Src/Template.Common/Template.Common.RabbitMQ/"]
-COPY ["Src/Template.Common/Template.Common.Contracts/Template.Common.Contracts.csproj", "Src/Template.Common/Template.Common.Contracts/"]
-COPY ["Src/Template.Common/Template.Common.SystemClients/Template.Common.SystemClients.csproj", "Src/Template.Common/Template.Common.SystemClients/"]
-COPY ["Src/Template.Gateway/Template.Gateway.DI/Template.Gateway.DI.csproj", "Src/Template.Gateway/Template.Gateway.DI/"]
-COPY ["Src/Template.Gateway/Template.Gateway.Handlers/Template.Gateway.Handlers.csproj", "Src/Template.Gateway/Template.Gateway.Handlers/"]
 RUN dotnet restore "./Src/Template.Gateway/Template.Gateway/./Template.Gateway.csproj"
 COPY . .
 WORKDIR "/src/Src/Template.Gateway/Template.Gateway"

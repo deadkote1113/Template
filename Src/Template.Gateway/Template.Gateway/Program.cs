@@ -1,18 +1,40 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.OpenApi.Models;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-var app = builder.Build();
+builder.Services
+    .AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
 
-// Configure the HTTP request pipeline.
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Template Gateway", Version = "v1" });
+});
+
+var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+
+//app.UseRequestLogger();
+
+//app.UseMiddleware<GlobalExeptionHandler>();
+
+app.UseAuthentication();
 app.UseAuthorization();
 
-
 app.MapControllers();
+
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Template Gateway v1"));
 
 app.Run();

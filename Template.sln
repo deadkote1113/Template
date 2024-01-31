@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Auth.DI", "Src\Tem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Auth", "Src\Template.Auth\Template.Auth\Template.Auth.csproj", "{0E9D671E-868C-4A54-B7F3-E665C751974E}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8729F9D4-8DC0-4399-A161-A5789CCF5226}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,10 @@ Global
 		{0E9D671E-868C-4A54-B7F3-E665C751974E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E9D671E-868C-4A54-B7F3-E665C751974E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E9D671E-868C-4A54-B7F3-E665C751974E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8729F9D4-8DC0-4399-A161-A5789CCF5226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8729F9D4-8DC0-4399-A161-A5789CCF5226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8729F9D4-8DC0-4399-A161-A5789CCF5226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8729F9D4-8DC0-4399-A161-A5789CCF5226}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

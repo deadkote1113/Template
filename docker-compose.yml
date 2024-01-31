@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  template.auth:
+    image: ${DOCKER_REGISTRY-}templateauth
+    build:
+      context: .
+      dockerfile: Src/Template.Auth/Template.Auth/Dockerfile
+
+  template.client:
+    image: ${DOCKER_REGISTRY-}templateclient
+    build:
+      context: .
+      dockerfile: Src/Template.Client/Template.Client/Dockerfile
+
+  template.gateway:
+    image: ${DOCKER_REGISTRY-}templategateway
+    build:
+      context: .
+      dockerfile: Src/Template.Gateway/Template.Gateway/Dockerfile
+

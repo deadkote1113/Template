@@ -1,26 +1,40 @@
-namespace Template.Auth;
+using Microsoft.OpenApi.Models;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-public class Program
-{
-    public static void Main(string[] args)
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+builder.Services
+    .AddControllers()
+    .AddJsonOptions(options => 
     {
-        var builder = WebApplication.CreateBuilder(args);
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
 
-        // Add services to the container.
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Template Auth", Version = "v1" });
+});
 
-        builder.Services.AddControllers();
+var app = builder.Build();
 
-        var app = builder.Build();
+app.UseHttpsRedirection();
 
-        // Configure the HTTP request pipeline.
+app.UseRouting();
 
-        app.UseHttpsRedirection();
+//app.UseRequestLogger();
 
-        app.UseAuthorization();
+//app.UseMiddleware<GlobalExeptionHandler>();
 
+app.UseAuthentication();
+app.UseAuthorization();
 
-        app.MapControllers();
+app.MapControllers();
 
-        app.Run();
-    }
-}
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Template Auth v1"));
+
+app.Run();

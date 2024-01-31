@@ -11,13 +11,6 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Src/Directory.Packages.props", "Src/"]
 COPY ["Src/Template.Auth/Template.Auth/Template.Auth.csproj", "Src/Template.Auth/Template.Auth/"]
-COPY ["Src/Template.Common/Template.Common.DI/Template.Common.DI.csproj", "Src/Template.Common/Template.Common.DI/"]
-COPY ["Src/Template.Common/Template.Common.RabbitMQ/Template.Common.RabbitMQ.csproj", "Src/Template.Common/Template.Common.RabbitMQ/"]
-COPY ["Src/Template.Common/Template.Common.Contracts/Template.Common.Contracts.csproj", "Src/Template.Common/Template.Common.Contracts/"]
-COPY ["Src/Template.Common/Template.Common.SystemClients/Template.Common.SystemClients.csproj", "Src/Template.Common/Template.Common.SystemClients/"]
-COPY ["Src/Template.Auth/Template.Auth.DI/Template.Auth.DI.csproj", "Src/Template.Auth/Template.Auth.DI/"]
-COPY ["Src/Template.Auth/Template.Auth.Services/Template.Auth.Services.csproj", "Src/Template.Auth/Template.Auth.Services/"]
-COPY ["Src/Template.Auth/Template.Auth.Repositories/Template.Auth.Repositories.csproj", "Src/Template.Auth/Template.Auth.Repositories/"]
 RUN dotnet restore "./Src/Template.Auth/Template.Auth/./Template.Auth.csproj"
 COPY . .
 WORKDIR "/src/Src/Template.Auth/Template.Auth"

@@ -1,0 +1,6 @@
+@Template.Auth_HostAddress = http://localhost:5212
+
+GET {{Template.Auth_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
